@@ -1,0 +1,117 @@
+/* ============================================================
+   fuel.css — page-specific additions on top of dashboard.css
+   Reuses --navy/--cyan/--blue/--border/--muted/--shadow from
+   dashboard.css so this page matches the rest of the app.
+   ============================================================ */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  align-items: end;
+}
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 12px; font-weight: 600; color: var(--muted); }
+.field input,
+.field select {
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 13.5px;
+  background: var(--bg);
+}
+.field input:focus,
+.field select:focus {
+  outline: 2px solid var(--cyan);
+  outline-offset: 1px;
+  background: var(--white);
+}
+.field-error { font-size: 11.5px; color: #d9534f; min-height: 14px; }
+
+.btn {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 10px 16px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn--primary { background: var(--blue); color: #fff; }
+.btn--danger { background: transparent; color: #d9534f; border: 1px solid #f3cdc9; padding: 6px 10px; font-size: 12.5px; }
+
+.toolbar { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.toolbar input,
+.toolbar select {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 13px;
+  background: var(--bg);
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+thead th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--border);
+}
+tbody td { padding: 11px 8px; border-bottom: 1px solid var(--border); }
+tbody tr:hover { background: #fafbfc; }
+.mono { font-variant-numeric: tabular-nums; }
+.empty-row td { text-align: center; color: var(--muted); padding: 30px 0; }
+
+.toast-container { position: fixed; bottom: 22px; right: 22px; display: flex; flex-direction: column; gap: 8px; z-index: 999; }
+.toast {
+  background: var(--navy);
+  color: #fff;
+  padding: 11px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s, transform 0.25s;
+  box-shadow: var(--shadow);
+}
+.toast--visible { opacity: 1; transform: translateY(0); }
+.toast--success { border-left: 3px solid var(--green); }
+.toast--error { border-left: 3px solid #d9534f; }
+
+/* category pills, specific to the expenses table */
+.pill {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.pill--toll { background: #fdeee8; color: #c1543c; }
+.pill--maintenance { background: #eaf1f5; color: #2c5570; }
+.pill--other { background: #eef4ee; color: #4c8c6b; }
+
+/* ============================================================
+   Colored stat-card accents — restores the amber/rust/moss
+   underline + monospace numbers from the original design,
+   layered on top of the shared dashboard .stat-card.
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap");
+
+.stat-card h2 {
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 3px solid var(--accent, var(--blue));
+  display: inline-block;
+  padding-bottom: 2px;
+}
+.stat-card.accent-amber  { --accent: #e0a458; }
+.stat-card.accent-rust   { --accent: #c1543c; }
+.stat-card.accent-moss   { --accent: #4c8c6b; }
+.stat-card.accent-blue   { --accent: var(--blue); }
+.stat-card.accent-purple { --accent: var(--purple); }

@@ -18,6 +18,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const user = JSON.parse(session);
 
+    const profileName = document.getElementById("profileName");
+    const profileRole = document.getElementById("profileRole");
+    const profileAvatar = document.getElementById("profileAvatar");
+    const welcomeName = document.getElementById("welcome");
+
+    if (profileName) {
+        profileName.textContent = user.name;
+    }
+
+    if (profileRole) {
+        profileRole.textContent = user.role;
+    }
+
+    if (profileAvatar) {
+        profileAvatar.textContent = user.name.charAt(0).toUpperCase();
+    }
+
+    if (welcomeName) {
+        welcomeName.textContent = `${user.name.split(" ")[0]}.`;
+    }
+
 
     /* =====================================
        CURRENT DATE
@@ -90,8 +111,6 @@ document.addEventListener("DOMContentLoaded", function () {
     menuItems.forEach(function (item) {
 
         item.addEventListener("click", function (event) {
-
-            event.preventDefault();
 
             menuItems.forEach(function (menu) {
                 menu.classList.remove("active");

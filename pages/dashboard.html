@@ -32,22 +32,22 @@
 
                 <p class="menu-title">OPERATIONS</p>
 
-                <a href="#" class="menu-item active">
+                <a href="dashboard.html" class="menu-item active">
                     <span class="menu-icon">⌂</span>
                     <span>Dashboard</span>
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="vehicles.html" class="menu-item">
                     <span class="menu-icon">▣</span>
                     <span>Vehicles</span>
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="drivers.html" class="menu-item">
                     <span class="menu-icon">♙</span>
                     <span>Drivers</span>
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="trips.html" class="menu-item">
                     <span class="menu-icon">↗</span>
                     <span>Trips</span>
                 </a>
@@ -60,12 +60,22 @@
 
                 <p class="menu-title">MANAGEMENT</p>
 
-                <a href="#" class="menu-item">
+                <a href="maintenance.html" class="menu-item">
                     <span class="menu-icon">◇</span>
                     <span>Maintenance</span>
                 </a>
 
-                <a href="#" class="menu-item">
+                <a href="fuel.html" class="menu-item">
+                    <span class="menu-icon">₹</span>
+                    <span>Fuel</span>
+                </a>
+
+                <a href="expenses.html" class="menu-item">
+                    <span class="menu-icon">✎</span>
+                    <span>Expenses</span>
+                </a>
+
+                <a href="reports.html" class="menu-item">
                     <span class="menu-icon">▤</span>
                     <span>Reports</span>
                 </a>
@@ -78,7 +88,7 @@
 
                 <p class="menu-title">SYSTEM</p>
 
-                <a href="#" class="menu-item">
+                <a href="settings.html" class="menu-item">
                     <span class="menu-icon">⚙</span>
                     <span>Settings</span>
                 </a>
@@ -143,13 +153,13 @@
 
                     <div class="profile">
 
-                        <div class="profile-avatar">
+                        <div class="profile-avatar" id="profileAvatar">
                             A
                         </div>
 
                         <div class="profile-info">
-                            <strong>Admin User</strong>
-                            <small>Fleet Manager</small>
+                            <strong id="profileName">Admin User</strong>
+                            <small id="profileRole">Fleet Manager</small>
                         </div>
 
                         <span class="profile-arrow">⌄</span>
@@ -178,7 +188,7 @@
 
                         <h1>
                             Good morning,
-                            <span>Admin.</span>
+                            <span id="welcome">Admin.</span>
                         </h1>
 
                         <p>
@@ -412,9 +422,9 @@
                                 <h2>Active trips</h2>
                             </div>
 
-                            <button class="view-btn">
+                            <a href="trips.html" class="view-btn">
                                 View all →
-                            </button>
+                            </a>
 
                         </div>
 
@@ -522,7 +532,7 @@
                             <p>Scheduled for service</p>
                         </div>
 
-                        <button>View →</button>
+                        <a href="maintenance.html" style="border:none;background:none;color:#079bc1;font-size:9px;font-weight:700;cursor:pointer;text-decoration:none;">View →</a>
 
                     </div>
 
@@ -539,7 +549,7 @@
                             <p>This month's spending</p>
                         </div>
 
-                        <button>Details →</button>
+                        <a href="fuel.html" style="border:none;background:none;color:#079bc1;font-size:9px;font-weight:700;cursor:pointer;text-decoration:none;">Details →</a>
 
                     </div>
 
@@ -556,7 +566,7 @@
                             <p>Ready to review</p>
                         </div>
 
-                        <button>Open →</button>
+                        <a href="reports.html" style="border:none;background:none;color:#079bc1;font-size:9px;font-weight:700;cursor:pointer;text-decoration:none;">Open →</a>
 
                     </div>
 

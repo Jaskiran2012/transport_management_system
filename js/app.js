@@ -142,29 +142,17 @@ loginForm.addEventListener("submit", async (event) => {
     await delay(900);
 
 
-    /* Check credentials */
+    /* Accept any credentials that pass the form validation. */
 
-    if (
+    const isDemoUser =
         email === DEMO_USER.email &&
-        password === DEMO_USER.password
-    ) {
+        password === DEMO_USER.password;
 
-        handleSuccessfulLogin(email);
-
-    } else {
-
-        setLoading(false);
-
-        showError(
-            passwordError,
-            "Incorrect email or password."
-        );
-
-        showToast(
-            "Login failed. Please check your credentials."
-        );
-
-    }
+    handleSuccessfulLogin(
+        email,
+        isDemoUser ? DEMO_USER.name : getDisplayName(email),
+        isDemoUser ? DEMO_USER.role : "Fleet Manager"
+    );
 
 });
 
@@ -212,6 +200,15 @@ function validateForm(email, password) {
 
         isValid = false;
 
+    } else if (password.length < 6) {
+
+        showError(
+            passwordError,
+            "Password must be at least 6 characters."
+        );
+
+        isValid = false;
+
     }
 
 
@@ -237,7 +234,7 @@ function isValidEmail(email) {
    SUCCESSFUL LOGIN
 ========================================================= */
 
-function handleSuccessfulLogin(email) {
+function handleSuccessfulLogin(email, name, role) {
 
     /* Remember email */
 
@@ -261,11 +258,11 @@ function handleSuccessfulLogin(email) {
 
     const session = {
 
-        email: DEMO_USER.email,
+        email,
 
-        name: DEMO_USER.name,
+        name,
 
-        role: DEMO_USER.role,
+        role,
 
         loginTime: new Date().toISOString()
 
@@ -282,7 +279,7 @@ function handleSuccessfulLogin(email) {
 
 
     showToast(
-        `Welcome back, ${DEMO_USER.name}.`
+        `Welcome back, ${name}.`
     );
 
 
@@ -294,7 +291,7 @@ function handleSuccessfulLogin(email) {
 
        
     */
-   window.location.href = "pages/dashboard.html";
+    window.location.href = "dashboard.html";
 
 }
 
@@ -450,5 +447,17 @@ function delay(milliseconds) {
         setTimeout(resolve, milliseconds);
 
     });
+
+}
+
+
+function getDisplayName(email) {
+
+    return email
+        .split("@")[0]
+    .replace(/\d+/g, "")
+        .replace(/[._-]+/g, " ")
+    .trim()
+        .replace(/\b\w/g, (letter) => letter.toUpperCase());
 
 }
