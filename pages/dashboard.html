@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TransitOps | Dashboard</title>
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+
+            <!-- Logo -->
+            <div class="brand">
+                <div class="brand-logo">TO</div>
+
+                <div class="brand-name">
+                    Transit<span>Ops</span>
+                </div>
+            </div>
+
+
+            <!-- Operations -->
+            <div class="menu-section">
+
+                <p class="menu-title">OPERATIONS</p>
+
+                <a href="#" class="menu-item active">
+                    <span class="menu-icon">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">▣</span>
+                    <span>Vehicles</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">♙</span>
+                    <span>Drivers</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">↗</span>
+                    <span>Trips</span>
+                </a>
+
+            </div>
+
+
+            <!-- Management -->
+            <div class="menu-section">
+
+                <p class="menu-title">MANAGEMENT</p>
+
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">◇</span>
+                    <span>Maintenance</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">▤</span>
+                    <span>Reports</span>
+                </a>
+
+            </div>
+
+
+            <!-- System -->
+            <div class="menu-section">
+
+                <p class="menu-title">SYSTEM</p>
+
+                <a href="#" class="menu-item">
+                    <span class="menu-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+
+            </div>
+
+
+            <!-- Bottom status -->
+            <div class="sidebar-bottom">
+
+                <div class="system-status">
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <strong>System operational</strong>
+                        <small>All services running</small>
+                    </div>
+                </div>
+
+                <button class="logout-btn" id="logoutBtn">
+                    <span>↪</span>
+                    Sign out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ================= MAIN AREA ================= -->
+        <main class="main-content">
+
+
+            <!-- ================= TOPBAR ================= -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="mobile-menu" id="mobileMenu">
+                        ☰
+                    </button>
+
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input
+                            type="text"
+                            placeholder="Search vehicles, drivers..."
+                        >
+                        <kbd>⌘ K</kbd>
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <button class="notification-btn">
+                        ♧
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="profile">
+
+                        <div class="profile-avatar">
+                            A
+                        </div>
+
+                        <div class="profile-info">
+                            <strong>Admin User</strong>
+                            <small>Fleet Manager</small>
+                        </div>
+
+                        <span class="profile-arrow">⌄</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ================= CONTENT ================= -->
+            <section class="dashboard-content">
+
+
+                <!-- Welcome -->
+                <div class="welcome-section">
+
+                    <div>
+
+                        <div class="live-label">
+                            <span></span>
+                            LIVE OPERATIONS
+                        </div>
+
+                        <h1>
+                            Good morning,
+                            <span>Admin.</span>
+                        </h1>
+
+                        <p>
+                            Here's what's happening across
+                            your fleet today.
+                        </p>
+
+                    </div>
+
+
+                    <div class="date-card">
+
+                        <div class="date-icon">
+                            ▣
+                        </div>
+
+                        <div>
+                            <small>OPERATIONS DATE</small>
+                            <strong id="currentDate">
+                                14 August 2026
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= STAT CARDS ================= -->
+                <div class="stats-grid">
+
+
+                    <!-- Vehicles -->
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon blue">
+                                ▣
+                            </div>
+
+                            <span class="growth positive">
+                                +4.6%
+                            </span>
+                        </div>
+
+                        <h2>124</h2>
+
+                        <p>Total Vehicles</p>
+
+                        <span class="stat-detail">
+                            118 active
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- Drivers -->
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon purple">
+                                ♙
+                            </div>
+
+                            <span class="growth positive">
+                                +2.8%
+                            </span>
+                        </div>
+
+                        <h2>86</h2>
+
+                        <p>Active Drivers</p>
+
+                        <span class="stat-detail">
+                            4 on leave
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- Trips -->
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon cyan">
+                                ↗
+                            </div>
+
+                            <span class="growth positive">
+                                +8.2%
+                            </span>
+                        </div>
+
+                        <h2>31</h2>
+
+                        <p>Active Trips</p>
+
+                        <span class="stat-detail">
+                            24 on route
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- Utilization -->
+                    <div class="stat-card">
+
+                        <div class="stat-top">
+                            <div class="stat-icon orange">
+                                %
+                            </div>
+
+                            <span class="growth positive">
+                                +4.6%
+                            </span>
+                        </div>
+
+                        <h2>72<span>%</span></h2>
+
+                        <p>Fleet Utilization</p>
+
+                        <span class="stat-detail">
+                            Average utilization
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= ANALYTICS ================= -->
+                <div class="analytics-grid">
+
+
+                    <!-- Fleet Performance -->
+                    <div class="panel performance-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <small>FLEET PERFORMANCE</small>
+                                <h2>Fleet activity</h2>
+                            </div>
+
+                            <select id="performanceFilter">
+                                <option>Last 7 days</option>
+                                <option>Last 30 days</option>
+                                <option>Last 90 days</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="chart">
+
+                            <div class="chart-y-axis">
+                                <span>100</span>
+                                <span>75</span>
+                                <span>50</span>
+                                <span>25</span>
+                                <span>0</span>
+                            </div>
+
+
+                            <div class="chart-area">
+
+                                <div class="grid-line line-1"></div>
+                                <div class="grid-line line-2"></div>
+                                <div class="grid-line line-3"></div>
+                                <div class="grid-line line-4"></div>
+
+                                <div class="bars">
+
+                                    <div class="bar-wrap">
+                                        <div class="bar" style="height: 55%"></div>
+                                        <span>Mon</span>
+                                    </div>
+
+                                    <div class="bar-wrap">
+                                        <div class="bar" style="height: 70%"></div>
+                                        <span>Tue</span>
+                                    </div>
+
+                                    <div class="bar-wrap">
+                                        <div class="bar" style="height: 62%"></div>
+                                        <span>Wed</span>
+                                    </div>
+
+                                    <div class="bar-wrap">
+                                        <div class="bar" style="height: 82%"></div>
+                                        <span>Thu</span>
+                                    </div>
+
+                                    <div class="bar-wrap">
+                                        <div class="bar" style="height: 75%"></div>
+                                        <span>Fri</span>
+                                    </div>
+
+                                    <div class="bar-wrap">
+                                        <div class="bar" style="height: 90%"></div>
+                                        <span>Sat</span>
+                                    </div>
+
+                                    <div class="bar-wrap">
+                                        <div class="bar" style="height: 68%"></div>
+                                        <span>Sun</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Live Tracking -->
+                    <div class="panel tracking-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <small>LIVE TRACKING</small>
+                                <h2>Active trips</h2>
+                            </div>
+
+                            <button class="view-btn">
+                                View all →
+                            </button>
+
+                        </div>
+
+
+                        <div class="trip-list">
+
+
+                            <div class="trip-item">
+
+                                <div class="vehicle-icon">
+                                    V1
+                                </div>
+
+                                <div class="trip-info">
+                                    <strong>VH-024</strong>
+                                    <small>Chandigarh → Mohali</small>
+                                </div>
+
+                                <div class="trip-status">
+                                    <span class="trip-dot"></span>
+                                    On route
+                                </div>
+
+                            </div>
+
+
+                            <div class="trip-item">
+
+                                <div class="vehicle-icon">
+                                    V2
+                                </div>
+
+                                <div class="trip-info">
+                                    <strong>VH-031</strong>
+                                    <small>Patiala → Chandigarh</small>
+                                </div>
+
+                                <div class="trip-status">
+                                    <span class="trip-dot"></span>
+                                    On route
+                                </div>
+
+                            </div>
+
+
+                            <div class="trip-item">
+
+                                <div class="vehicle-icon">
+                                    V3
+                                </div>
+
+                                <div class="trip-info">
+                                    <strong>VH-018</strong>
+                                    <small>Mohali → Zirakpur</small>
+                                </div>
+
+                                <div class="trip-status delayed">
+                                    <span class="trip-dot"></span>
+                                    Delayed
+                                </div>
+
+                            </div>
+
+
+                            <div class="trip-item">
+
+                                <div class="vehicle-icon">
+                                    V4
+                                </div>
+
+                                <div class="trip-info">
+                                    <strong>VH-042</strong>
+                                    <small>Ambala → Chandigarh</small>
+                                </div>
+
+                                <div class="trip-status">
+                                    <span class="trip-dot"></span>
+                                    On route
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= BOTTOM ================= -->
+                <div class="bottom-grid">
+
+
+                    <div class="mini-panel">
+
+                        <div class="mini-icon green">
+                            ✓
+                        </div>
+
+                        <div>
+                            <small>MAINTENANCE</small>
+                            <h3>8 vehicles</h3>
+                            <p>Scheduled for service</p>
+                        </div>
+
+                        <button>View →</button>
+
+                    </div>
+
+
+                    <div class="mini-panel">
+
+                        <div class="mini-icon orange">
+                            ₹
+                        </div>
+
+                        <div>
+                            <small>FUEL EXPENSES</small>
+                            <h3>₹42,850</h3>
+                            <p>This month's spending</p>
+                        </div>
+
+                        <button>Details →</button>
+
+                    </div>
+
+
+                    <div class="mini-panel">
+
+                        <div class="mini-icon blue">
+                            ↗
+                        </div>
+
+                        <div>
+                            <small>REPORTS</small>
+                            <h3>12 reports</h3>
+                            <p>Ready to review</p>
+                        </div>
+
+                        <button>Open →</button>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Dashboard JavaScript -->
+    <script src="../js/dashboard.js"></script>
+
+</body>
+</html>

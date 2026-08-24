@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="TransitOps - Smart Transport Operations Platform"
+    >
+
+    <title>TransitOps | Smart Transport Operations</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <!-- =========================================
+             LEFT: OPERATIONS VISUALIZATION
+        ========================================== -->
+        <section class="operations-panel">
+
+            <div class="panel-grid"></div>
+
+            <!-- Brand -->
+            <header class="brand">
+                <div class="brand-mark">
+                    <span>TO</span>
+                </div>
+
+                <div class="brand-name">
+                    <span>Transit</span><strong>Ops</strong>
+                </div>
+            </header>
+
+
+            <!-- Main Hero Content -->
+            <div class="operations-content">
+
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    LIVE FLEET OPERATIONS
+                </div>
+
+                <h1>
+                    Move smarter.<br>
+                    <span>Operate better.</span>
+                </h1>
+
+                <p class="hero-description">
+                    One platform to manage your vehicles, drivers,
+                    trips and transport operations.
+                </p>
+
+
+                <!-- Route Visualization -->
+                <div class="route-card">
+
+                    <div class="route-header">
+                        <div>
+                            <span class="route-label">ACTIVE ROUTE</span>
+                            <strong>Patiala → Chandigarh</strong>
+                        </div>
+
+                        <span class="route-status">
+                            ON TRIP
+                        </span>
+                    </div>
+
+
+                    <div class="route-map">
+
+                        <div class="map-grid"></div>
+
+                        <div class="route-line"></div>
+
+                        <div class="route-point point-start">
+                            <span></span>
+                        </div>
+
+                        <div class="route-point point-end">
+                            <span></span>
+                        </div>
+
+                        <div class="location-label label-start">
+                            PATIALA
+                        </div>
+
+                        <div class="location-label label-end">
+                            CHANDIGARH
+                        </div>
+
+                        <!-- Moving Vehicle -->
+                        <div class="vehicle-marker">
+                            <div class="vehicle-pulse"></div>
+
+                            <div class="vehicle-icon">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M5 17h14M6 17V8h10l3 4v5M8 17a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="vehicle-info">
+
+                        <div class="vehicle-details">
+                            <span>VEHICLE</span>
+                            <strong>VH-024 · Van 05</strong>
+                        </div>
+
+                        <div class="vehicle-details">
+                            <span>DRIVER</span>
+                            <strong>Alex Morgan</strong>
+                        </div>
+
+                        <div class="vehicle-details">
+                            <span>ETA</span>
+                            <strong>42 min</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Operational Stats -->
+                <div class="operations-stats">
+
+                    <div class="stat-item">
+                        <span class="stat-value" data-target="24">24</span>
+                        <span class="stat-label">Active Vehicles</span>
+                    </div>
+
+                    <div class="stat-divider"></div>
+
+                    <div class="stat-item">
+                        <span class="stat-value" data-target="8">08</span>
+                        <span class="stat-label">Active Trips</span>
+                    </div>
+
+                    <div class="stat-divider"></div>
+
+                    <div class="stat-item">
+                        <span class="stat-value" data-target="72">72%</span>
+                        <span class="stat-label">Fleet Utilization</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom -->
+            <footer class="operations-footer">
+
+                <span>
+                    <span class="online-indicator"></span>
+                    All systems operational
+                </span>
+
+                <span>
+                    TRANSITOPS PLATFORM
+                </span>
+
+            </footer>
+
+        </section>
+
+
+        <!-- =========================================
+             RIGHT: LOGIN
+        ========================================== -->
+        <section class="login-panel">
+
+            <div class="login-container">
+
+                <div class="mobile-brand">
+                    <div class="brand-mark">
+                        <span>TO</span>
+                    </div>
+
+                    <div class="brand-name">
+                        <span>Transit</span><strong>Ops</strong>
+                    </div>
+                </div>
+
+
+                <div class="login-header">
+
+                    <span class="welcome-label">
+                        WELCOME BACK
+                    </span>
+
+                    <h2>
+                        Sign in to your<br>
+                        <span>operations hub.</span>
+                    </h2>
+
+                    <p>
+                        Access your fleet operations dashboard
+                        securely.
+                    </p>
+
+                </div>
+
+
+                <!-- Login Form -->
+                <form id="loginForm" novalidate>
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="email">
+                            Work email
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <svg
+                                class="input-icon"
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M4 5h16v14H4zM4 6l8 6 8-6"
+                                />
+                            </svg>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@company.com"
+                                autocomplete="email"
+                                required
+                            />
+
+                        </div>
+
+                        <small class="error-message" id="emailError"></small>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <div class="label-row">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <a href="#" id="forgotPassword">
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+                        <div class="input-wrapper">
+
+                            <svg
+                                class="input-icon"
+                                viewBox="0 0 24 24"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M7 10V7a5 5 0 0 1 10 0v3M5 10h14v10H5z"
+                                />
+                            </svg>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            />
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                                aria-label="Show password"
+                            >
+                                <svg
+                                    id="eyeIcon"
+                                    viewBox="0 0 24 24"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"
+                                    />
+
+                                    <circle
+                                        cx="12"
+                                        cy="12"
+                                        r="2.5"
+                                    />
+                                </svg>
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error-message"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Remember -->
+                    <div class="login-options">
+
+                        <label class="checkbox-wrapper">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            />
+
+                            <span class="custom-checkbox">
+                                <svg viewBox="0 0 12 12">
+                                    <path d="M2 6l2.5 2.5L10 3" />
+                                </svg>
+                            </span>
+
+                            <span>Remember me</span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Submit -->
+                    <button
+                        type="submit"
+                        class="login-button"
+                        id="loginButton"
+                    >
+
+                        <span class="button-text">
+                            Sign in
+                        </span>
+
+                        <span class="button-arrow">
+                            →
+                        </span>
+
+                        <span class="button-loader">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <!-- Demo Credentials -->
+                <div class="demo-access">
+
+                    <div class="demo-icon">
+                        ⓘ
+                    </div>
+
+                    <div>
+                        <strong>Demo access</strong>
+
+                        <p>
+                            admin@transitops.com
+                            <span>·</span>
+                            admin123
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Security -->
+                <div class="security-note">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 3l8 3v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6l8-3Z"
+                        />
+                        <path d="M9 12l2 2 4-4" />
+                    </svg>
+
+                    <span>
+                        Secure access · Authorized users only
+                    </span>
+
+                </div>
+
+
+                <p class="copyright">
+                    © 2026 TransitOps. Smart transport operations.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Toast -->
+    <div
+        class="toast"
+        id="toast"
+        role="alert"
+        aria-live="polite"
+    >
+        <span class="toast-icon">✓</span>
+        <span id="toastMessage"></span>
+    </div>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>
