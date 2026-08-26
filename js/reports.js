@@ -5,31 +5,89 @@
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-  seedVehiclesIfEmpty();
-
   renderStats();
   renderVehicleCostChart();
   renderEfficiencyChart();
+  loadWeatherPanel();
+  populateRouteCityDropdowns();
 
   document.getElementById("exportFuelBtn").addEventListener("click", () => exportCSV("fuel"));
   document.getElementById("exportExpensesBtn").addEventListener("click", () => exportCSV("expenses"));
+  document.getElementById("routeForm").addEventListener("submit", handleRouteSubmit);
 });
 
-function getExpenseStats() {
-  const fuelLogs = getData(LS_KEYS.fuelLogs);
-  const expenses = getData(LS_KEYS.expenses);
+// ---------- Live Conditions panel (Fetch API + async/await) ----------
+async function loadWeatherPanel() {
+  const container = document.getElementById("weatherPanel");
+  const results = await fetchFleetWeather(); // defined in api.js
 
-  const totalFuelCost = fuelLogs.reduce((sum, l) => sum + l.cost, 0);
-  const totalExpenseCost = expenses.reduce((sum, e) => sum + e.amount, 0);
+  container.innerHTML = results
+    .map((w) => {
+      if (!w.ok) {
+        return `<div class="weather-card weather-card--error">${w.city}<br>Unavailable right now</div>`;
+      }
+      return `
+        <div class="weather-card">
+          <div class="weather-card__icon">${w.icon}</div>
+          <div class="weather-card__city">${w.city}</div>
+          <div class="weather-card__temp">${w.temperature}°C</div>
+          <div class="weather-card__label">${w.label}</div>
+          <div class="weather-card__wind">Wind ${w.windspeed} km/h</div>
+        </div>`;
+    })
+    .join("");
 
-  return {
-    totalFuelCost,
-    totalExpenseCost,
-    totalOperatingCost: totalFuelCost + totalExpenseCost,
-    fuelRecordCount: fuelLogs.length,
-    expenseRecordCount: expenses.length,
-  };
+  // chart driven directly by the same API response — no extra fetch
+  const chartRows = results
+    .filter((w) => w.ok)
+    .map((w) => ({ name: w.city, temp: w.temperature }));
+  renderBarChart("weatherChart", chartRows, "temp", (v) => `${v}°C`);
 }
+
+// ---------- Route planner (Fetch API, for Trips integration) ----------
+function populateRouteCityDropdowns() {
+  const fromSelect = document.getElementById("fromCity");
+  const toSelect = document.getElementById("toCity");
+
+  FLEET_CITIES.forEach((city) => {
+    fromSelect.insertAdjacentHTML("beforeend", `<option value="${city.name}">${city.name}</option>`);
+    toSelect.insertAdjacentHTML("beforeend", `<option value="${city.name}">${city.name}</option>`);
+  });
+  toSelect.selectedIndex = 1; // default to a different city than "from"
+}
+
+async function handleRouteSubmit(event) {
+  event.preventDefault();
+  const from = document.getElementById("fromCity").value;
+  const to = document.getElementById("toCity").value;
+  const resultBox = document.getElementById("routeResult");
+
+  if (from === to) {
+    resultBox.innerHTML = `<p style="color:var(--muted); font-size:13px;">Pick two different cities.</p>`;
+    return;
+  }
+
+  resultBox.innerHTML = `<p style="color:var(--muted); font-size:13px;">Calculating route…</p>`;
+
+  const route = await fetchRoute(from, to); // defined in api.js
+
+  if (!route.ok) {
+    resultBox.innerHTML = `<p style="color:var(--muted); font-size:13px;">Couldn't fetch a route right now. Try again.</p>`;
+    return;
+  }
+
+  resultBox.innerHTML = `
+    <div class="stat-card accent-blue" style="max-width:320px;">
+      <div class="stat-top"><div class="stat-icon cyan">↗</div></div>
+      <h2>${route.distanceKm} km</h2>
+      <p>${route.from} → ${route.to}</p>
+      <span class="stat-detail">~${route.durationMin} min drive time</span>
+    </div>
+  `;
+}
+
+// getExpenseStats() now lives in shared.js so dashboard.html can
+// call it too — see the "integration point" comment there.
 
 function renderStats() {
   const { totalFuelCost, totalExpenseCost, totalOperatingCost } = getExpenseStats();
@@ -72,7 +130,7 @@ function renderVehicleCostChart() {
   const rows = vehicles.map((v) => {
     const fuelCost = fuelLogs.filter((l) => l.vehicleId === v.id).reduce((s, l) => s + l.cost, 0);
     const expenseCost = expenses.filter((e) => e.vehicleId === v.id).reduce((s, e) => s + e.amount, 0);
-    return { name: v.name, total: fuelCost + expenseCost };
+    return { name: getVehicleName(v.id), total: fuelCost + expenseCost };
   });
 
   renderBarChart("vehicleCostChart", rows, "total", formatCurrency);
@@ -88,7 +146,7 @@ function renderEfficiencyChart() {
       const litres = logs.reduce((s, l) => s + l.litres, 0);
       const cost = logs.reduce((s, l) => s + l.cost, 0);
       const rate = litres > 0 ? cost / litres : 0;
-      return { name: v.name, rate, hasData: logs.length > 0 };
+      return { name: getVehicleName(v.id), rate, hasData: logs.length > 0 };
     })
     .filter((r) => r.hasData);
 

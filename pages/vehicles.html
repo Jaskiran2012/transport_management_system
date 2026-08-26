@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TransitOps | Vehicles</title>
+
+    <!-- Existing project styling -->
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <!-- Vehicle page styling -->
+    <link rel="stylesheet" href="../css/vehicles.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">TO</div>
+            <div class="brand-name">Transit<span>Ops</span></div>
+        </div>
+
+        <div class="menu-section">
+            <p class="menu-title">OPERATIONS</p>
+
+        <a href="dashboard.html" class="menu-item">
+            <span class="menu-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="vehicles.html" class="menu-item active">
+            <span class="menu-icon">▣</span>
+            <span>Vehicles</span>
+        </a>
+
+        <a href="drivers.html" class="menu-item">
+            <span class="menu-icon">♙</span>
+            <span>Drivers</span>
+        </a>
+
+        <a href="trips.html" class="menu-item">
+            <span class="menu-icon">↗</span>
+            <span>Trips</span>
+        </a>
+        </div>
+
+
+        <div class="menu-section">
+            <p class="menu-title">MANAGEMENT</p>
+
+        <a href="maintenance.html" class="menu-item">
+            <span class="menu-icon">◇</span>
+            <span>Maintenance</span>
+        </a>
+
+        <a href="fuel.html" class="menu-item">
+            <span class="menu-icon">₹</span>
+            <span>Fuel</span>
+        </a>
+
+        <a href="expenses.html" class="menu-item">
+            <span class="menu-icon">✎</span>
+            <span>Expenses</span>
+        </a>
+
+        <a href="reports.html" class="menu-item">
+            <span class="menu-icon">▤</span>
+            <span>Reports</span>
+        </a>
+        </div>
+
+
+        <div class="menu-section">
+            <p class="menu-title">SYSTEM</p>
+
+        <a href="settings.html" class="menu-item">
+            <span class="menu-icon">⚙</span>
+            <span>Settings</span>
+        </a>
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>System operational</strong>
+                    <small>All services running</small>
+                </div>
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">
+                <span>↪</span>
+                Sign out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="mobile-menu" id="mobileMenu">
+                    ☰
+                </button>
+
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input type="text" placeholder="Search vehicles...">
+                    <kbd>⌘ K</kbd>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="notification-btn">
+                    ♧
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar" id="sharedProfileAvatar">A</div>
+
+                    <div class="profile-info">
+                        <strong id="sharedProfileName">Admin User</strong>
+                        <small id="sharedProfileRole">Fleet Manager</small>
+                    </div>
+
+                    <span class="profile-arrow">⌄</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- VEHICLES CONTENT -->
+        <section class="dashboard-content">
+
+            <!-- PAGE HEADER -->
+            <div class="welcome-section">
+
+                <div>
+
+                    <div class="live-label">
+                        <span></span>
+                        VEHICLE MANAGEMENT
+                    </div>
+
+                    <h1>
+                        Manage your <span>Vehicles.</span>
+                    </h1>
+
+                    <p>
+                        Add, monitor and manage all vehicles in your transport fleet.
+                    </p>
+
+                </div>
+
+                <button class="primary-btn" id="addVehicleBtn">
+                    + Add Vehicle
+                </button>
+
+            </div>
+
+
+            <!-- VEHICLE STATS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon cyan">▣</div>
+                    </div>
+
+                    <h2 id="totalVehicles">0</h2>
+                    <p>Total Vehicles</p>
+                    <span class="stat-detail">Registered vehicles</span>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon green">✓</div>
+                    </div>
+
+                    <h2 id="availableVehicles">0</h2>
+                    <p>Available</p>
+                    <span class="stat-detail">Ready for trips</span>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon blue">▶</div>
+                    </div>
+
+                    <h2 id="onTripVehicles">0</h2>
+                    <p>On Trip</p>
+                    <span class="stat-detail">Currently assigned</span>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <div class="stat-icon orange">!</div>
+                    </div>
+
+                    <h2 id="maintenanceVehicles">0</h2>
+                    <p>Maintenance</p>
+                    <span class="stat-detail">Under maintenance</span>
+                </div>
+
+            </div>
+
+
+            <!-- ADD VEHICLE FORM -->
+            <div class="panel" id="vehicleFormPanel" style="display: none;">
+
+                <div class="panel-header">
+
+                    <div>
+                        <small>NEW VEHICLE</small>
+                        <h2>Add Vehicle</h2>
+                    </div>
+
+                </div>
+
+
+                <form id="vehicleForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Vehicle Number</label>
+                            <input
+                                type="text"
+                                id="vehicleNumber"
+                                placeholder="e.g. PB10AB1234"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Vehicle Type</label>
+
+                            <select id="vehicleType" required>
+
+                                <option value="">
+                                    Select vehicle type
+                                </option>
+
+                                <option value="Truck">
+                                    Truck
+                                </option>
+
+                                <option value="Van">
+                                    Van
+                                </option>
+
+                                <option value="Bus">
+                                    Bus
+                                </option>
+
+                                <option value="Tanker">
+                                    Tanker
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Model</label>
+
+                            <input
+                                type="text"
+                                id="vehicleModel"
+                                placeholder="Enter vehicle model"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Capacity (kg)</label>
+
+                            <input
+                                type="number"
+                                id="vehicleCapacity"
+                                placeholder="Enter capacity"
+                                min="1"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Registration Date</label>
+
+                            <input
+                                type="date"
+                                id="registrationDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Status</label>
+
+                            <select id="vehicleStatus" required>
+
+                                <option value="Available">
+                                    Available
+                                </option>
+
+                                <option value="On Trip">
+                                    On Trip
+                                </option>
+
+                                <option value="Maintenance">
+                                    Maintenance
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            id="cancelVehicleBtn"
+                        >
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            Add Vehicle
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- VEHICLE TABLE -->
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <small>FLEET RECORDS</small>
+
+                        <h2>All Vehicles</h2>
+
+                    </div>
+
+
+                    <select id="vehicleStatusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="Available">
+                            Available
+                        </option>
+
+                        <option value="On Trip">
+                            On Trip
+                        </option>
+
+                        <option value="Maintenance">
+                            Maintenance
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Vehicle No.</th>
+                                <th>Type</th>
+                                <th>Model</th>
+                                <th>Capacity</th>
+                                <th>Registration</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="vehiclesTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    style="text-align: center;"
+                                >
+                                    No vehicles registered yet.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/shared.js"></script>
+    <script src="../js/vehicles.js"></script>
+
+</body>
+
+</html>

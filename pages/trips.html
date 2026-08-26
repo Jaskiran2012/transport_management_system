@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TransitOps | Trips0</title>
+
+    <!-- Dashboard CSS -->
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/trips.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar">
+
+            <!-- Logo -->
+            <div class="brand">
+                <div class="brand-logo">TO</div>
+
+                <div class="brand-name">
+                    Transit<span>Ops</span>
+                </div>
+            </div>
+
+
+            <!-- Operations -->
+            <div class="menu-section">
+                <p class="menu-title">OPERATIONS</p>
+
+            <a href="dashboard.html" class="menu-item">
+                <span class="menu-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="vehicles.html" class="menu-item">
+                <span class="menu-icon">▣</span>
+                <span>Vehicles</span>
+            </a>
+
+            <a href="drivers.html" class="menu-item">
+                <span class="menu-icon">♙</span>
+                <span>Drivers</span>
+            </a>
+
+            <a href="trips.html" class="menu-item active">
+                <span class="menu-icon">↗</span>
+                <span>Trips</span>
+            </a>
+            </div>
+
+
+            <div class="menu-section">
+                <p class="menu-title">MANAGEMENT</p>
+
+            <a href="maintenance.html" class="menu-item">
+                <span class="menu-icon">◇</span>
+                <span>Maintenance</span>
+            </a>
+
+            <a href="fuel.html" class="menu-item">
+                <span class="menu-icon">₹</span>
+                <span>Fuel</span>
+            </a>
+
+            <a href="expenses.html" class="menu-item">
+                <span class="menu-icon">✎</span>
+                <span>Expenses</span>
+            </a>
+
+            <a href="reports.html" class="menu-item">
+                <span class="menu-icon">▤</span>
+                <span>Reports</span>
+            </a>
+            </div>
+
+
+            <div class="menu-section">
+                <p class="menu-title">SYSTEM</p>
+
+            <a href="settings.html" class="menu-item">
+                <span class="menu-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+            </div>
+
+
+            <!-- Bottom status -->
+            <div class="sidebar-bottom">
+
+                <div class="system-status">
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <strong>System operational</strong>
+                        <small>All services running</small>
+                    </div>
+                </div>
+
+                <button class="logout-btn" id="logoutBtn">
+                    <span>↪</span>
+                    Sign out
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ================= MAIN AREA ================= -->
+        <main class="main-content">
+
+
+            <!-- ================= TOPBAR ================= -->
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button class="mobile-menu" id="mobileMenu">
+                        ☰
+                    </button>
+
+                    <div class="search-box">
+                        <span>⌕</span>
+                        <input
+                            type="text"
+                            placeholder="Search vehicles, drivers..."
+                        >
+                        <kbd>⌘ K</kbd>
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <button class="notification-btn">
+                        ♧
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="profile">
+
+                        <div class="profile-avatar" id="sharedProfileAvatar">
+                            A
+                        </div>
+
+                        <div class="profile-info">
+                            <strong id="sharedProfileName">Admin User</strong>
+                            <small id="sharedProfileRole">Fleet Manager</small>
+                        </div>
+
+                        <span class="profile-arrow">⌄</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ================= CONTENT ================= -->
+            <section class="dashboard-content">
+
+    <!-- PAGE HEADER -->
+    <div class="welcome-section">
+        <div>
+            <div class="live-label">
+                <span></span>
+                TRIP MANAGEMENT
+            </div>
+
+            <h1>
+                Manage your <span>Trips.</span>
+            </h1>
+
+            <p>
+                Schedule, monitor and manage transport trips across your fleet.
+            </p>
+        </div>
+
+        <button class="primary-btn" id="addTripBtn">
+            + Schedule Trip
+        </button>
+    </div>
+
+
+    <!-- TRIP STATS -->
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <div class="stat-icon cyan">↗</div>
+            </div>
+
+            <h2 id="totalTrips">0</h2>
+            <p>Total Trips</p>
+            <span class="stat-detail">All scheduled trips</span>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <div class="stat-icon blue">▶</div>
+            </div>
+
+            <h2 id="activeTrips">0</h2>
+            <p>Active Trips</p>
+            <span class="stat-detail">Currently running</span>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <div class="stat-icon green">✓</div>
+            </div>
+
+            <h2 id="completedTrips">0</h2>
+            <p>Completed</p>
+            <span class="stat-detail">Successfully completed</span>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-top">
+                <div class="stat-icon orange">!</div>
+            </div>
+
+            <h2 id="delayedTrips">0</h2>
+            <p>Delayed</p>
+            <span class="stat-detail">Needs attention</span>
+        </div>
+
+    </div>
+
+
+    <!-- TRIP FORM -->
+    <div class="panel" id="tripFormPanel" style="display: none;">
+
+        <div class="panel-header">
+            <div>
+                <small>NEW TRIP</small>
+                <h2>Schedule a Trip</h2>
+            </div>
+        </div>
+
+        <form id="tripForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Vehicle</label>
+                    <select id="vehicle" required>
+                        <option value="">Select vehicle</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Driver</label>
+                    <select id="driver" required>
+                        <option value="">Select driver</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Source</label>
+                    <input
+                        type="text"
+                        id="source"
+                        placeholder="Enter source"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Destination</label>
+                    <input
+                        type="text"
+                        id="destination"
+                        placeholder="Enter destination"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Cargo</label>
+                    <input
+                        type="text"
+                        id="cargo"
+                        placeholder="Enter cargo details"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Cargo Weight (kg)</label>
+                    <input
+                        type="number"
+                        id="cargoWeight"
+                        placeholder="Enter weight"
+                        min="0"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Departure Date</label>
+                    <input
+                        type="date"
+                        id="departureDate"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-group">
+                    <label>Departure Time</label>
+                    <input
+                        type="time"
+                        id="departureTime"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+                <button type="button" class="secondary-btn" id="cancelTripBtn">
+                    Cancel
+                </button>
+
+                <button type="submit" class="primary-btn">
+                    Create Trip
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- TRIPS TABLE -->
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <div>
+                <small>TRIP RECORDS</small>
+                <h2>All Trips</h2>
+            </div>
+
+            <div>
+                <select id="statusFilter">
+                    <option value="all">All Status</option>
+                    <option value="Scheduled">Scheduled</option>
+                    <option value="On Route">On Route</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Delayed">Delayed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Trip ID</th>
+                        <th>Vehicle</th>
+                        <th>Driver</th>
+                        <th>Route</th>
+                        <th>Cargo</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tripsTableBody">
+
+                    <tr>
+                        <td colspan="7" style="text-align: center;">
+                            No trips scheduled yet.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/shared.js"></script>
+    <script src="../js/trips.js"></script>
+
+</body>
+</html>

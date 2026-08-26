@@ -1,0 +1,161 @@
+/* =========================================
+   TRANSITOPS - DRIVERS PAGE
+========================================= */
+
+.primary-btn {
+    border: none;
+    background: #13c9ee;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.primary-btn:hover {
+    background: #0daed0;
+}
+
+.secondary-btn {
+    border: 1px solid #d8e0e8;
+    background: white;
+    color: #14243a;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.secondary-btn:hover {
+    background: #f7f9fb;
+}
+
+
+/* =========================================
+   DRIVER FORM
+========================================= */
+
+#driverFormPanel {
+    margin-bottom: 24px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #14243a;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d8e0e8;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+    color: #14243a;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #13c9ee;
+    box-shadow: 0 0 0 3px rgba(19, 201, 238, 0.1);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 0 24px 24px;
+}
+
+
+/* =========================================
+   DRIVER TABLE
+========================================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 24px 24px;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table-container th {
+    padding: 14px 12px;
+    background: #f7f9fb;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #e5eaf0;
+}
+
+.table-container td {
+    padding: 16px 12px;
+    color: #14243a;
+    font-size: 14px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.table-container tbody tr:hover {
+    background: #f8fbfd;
+}
+
+
+/* =========================================
+   STATUS FILTER
+========================================= */
+
+#driverStatusFilter {
+    padding: 10px 14px;
+    border: 1px solid #d8e0e8;
+    border-radius: 8px;
+    background: white;
+    color: #14243a;
+    cursor: pointer;
+    outline: none;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+}

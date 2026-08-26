@@ -142,8 +142,6 @@ loginForm.addEventListener("submit", async (event) => {
     await delay(900);
 
 
-    /* Accept any credentials that pass the form validation. */
-
     const isDemoUser =
         email === DEMO_USER.email &&
         password === DEMO_USER.password;
@@ -225,7 +223,9 @@ function isValidEmail(email) {
     const emailPattern =
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    return emailPattern.test(email);
+    const looseEmailPattern = /^[^\s@]+\.[a-z]{2,}$/i;
+
+    return emailPattern.test(email) || looseEmailPattern.test(email);
 
 }
 
@@ -453,11 +453,10 @@ function delay(milliseconds) {
 
 function getDisplayName(email) {
 
-    return email
-        .split("@")[0]
-    .replace(/\d+/g, "")
-        .replace(/[._-]+/g, " ")
-    .trim()
-        .replace(/\b\w/g, (letter) => letter.toUpperCase());
+    const username = email.split("@")[0];
+    const namePart = username.split(/\d/)[0].replace(/[._-]+/g, " ").trim();
+
+    return namePart
+        .replace(/\b\w/g, (letter) => letter.toUpperCase()) || "User";
 
 }

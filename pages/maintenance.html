@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TransitOps | Maintenance</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/maintenance.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">TO</div>
+            <div class="brand-name">Transit<span>Ops</span></div>
+        </div>
+
+        <div class="menu-section">
+            <p class="menu-title">OPERATIONS</p>
+
+        <a href="dashboard.html" class="menu-item">
+            <span class="menu-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="vehicles.html" class="menu-item">
+            <span class="menu-icon">▣</span>
+            <span>Vehicles</span>
+        </a>
+
+        <a href="drivers.html" class="menu-item">
+            <span class="menu-icon">♙</span>
+            <span>Drivers</span>
+        </a>
+
+        <a href="trips.html" class="menu-item">
+            <span class="menu-icon">↗</span>
+            <span>Trips</span>
+        </a>
+        </div>
+
+
+        <div class="menu-section">
+            <p class="menu-title">MANAGEMENT</p>
+
+        <a href="maintenance.html" class="menu-item active">
+            <span class="menu-icon">◇</span>
+            <span>Maintenance</span>
+        </a>
+
+        <a href="fuel.html" class="menu-item">
+            <span class="menu-icon">₹</span>
+            <span>Fuel</span>
+        </a>
+
+        <a href="expenses.html" class="menu-item">
+            <span class="menu-icon">✎</span>
+            <span>Expenses</span>
+        </a>
+
+        <a href="reports.html" class="menu-item">
+            <span class="menu-icon">▤</span>
+            <span>Reports</span>
+        </a>
+        </div>
+
+
+        <div class="menu-section">
+            <p class="menu-title">SYSTEM</p>
+
+        <a href="settings.html" class="menu-item">
+            <span class="menu-icon">⚙</span>
+            <span>Settings</span>
+        </a>
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+
+                <div>
+                    <strong>System operational</strong>
+                    <small>All services running</small>
+                </div>
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">
+                <span>↪</span>
+                Sign out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="mobile-menu" id="mobileMenu">
+                    ☰
+                </button>
+
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input
+                        type="text"
+                        id="maintenanceSearch"
+                        placeholder="Search maintenance..."
+                    >
+                    <kbd>⌘ K</kbd>
+                </div>
+
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="notification-btn">
+                    ♧
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+
+                    <div class="profile-avatar" id="sharedProfileAvatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+                        <strong id="sharedProfileName">Admin User</strong>
+                        <small id="sharedProfileRole">Fleet Manager</small>
+                    </div>
+
+                    <span class="profile-arrow">⌄</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="dashboard-content">
+
+            <!-- HEADER -->
+            <div class="welcome-section">
+
+                <div>
+
+                    <div class="live-label">
+                        <span></span>
+                        FLEET MAINTENANCE
+                    </div>
+
+                    <h1>
+                        Vehicle <span>Maintenance.</span>
+                    </h1>
+
+                    <p>
+                        Schedule and track vehicle maintenance activities.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    id="addMaintenanceBtn"
+                >
+                    + Schedule Maintenance
+                </button>
+
+            </div>
+
+
+            <!-- STATS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <div class="stat-icon cyan">
+                            ◇
+                        </div>
+                    </div>
+
+                    <h2 id="totalMaintenance">0</h2>
+
+                    <p>Total Records</p>
+
+                    <span class="stat-detail">
+                        Maintenance records
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <div class="stat-icon orange">
+                            !
+                        </div>
+                    </div>
+
+                    <h2 id="pendingMaintenance">0</h2>
+
+                    <p>Pending</p>
+
+                    <span class="stat-detail">
+                        Awaiting service
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <div class="stat-icon blue">
+                            ↻
+                        </div>
+                    </div>
+
+                    <h2 id="inProgressMaintenance">0</h2>
+
+                    <p>In Progress</p>
+
+                    <span class="stat-detail">
+                        Currently being serviced
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <div class="stat-icon green">
+                            ✓
+                        </div>
+                    </div>
+
+                    <h2 id="completedMaintenance">0</h2>
+
+                    <p>Completed</p>
+
+                    <span class="stat-detail">
+                        Completed services
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORM -->
+            <div
+                class="panel"
+                id="maintenanceFormPanel"
+                style="display: none;"
+            >
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <small>MAINTENANCE</small>
+
+                        <h2>Schedule Maintenance</h2>
+
+                    </div>
+
+                </div>
+
+
+                <form id="maintenanceForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>Vehicle</label>
+
+                            <select
+                                id="maintenanceVehicle"
+                                required
+                            >
+                                <option value="">
+                                    Select vehicle
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Maintenance Type</label>
+
+                            <select
+                                id="maintenanceType"
+                                required
+                            >
+
+                                <option value="">
+                                    Select type
+                                </option>
+
+                                <option value="Routine Service">
+                                    Routine Service
+                                </option>
+
+                                <option value="Oil Change">
+                                    Oil Change
+                                </option>
+
+                                <option value="Brake Service">
+                                    Brake Service
+                                </option>
+
+                                <option value="Engine Repair">
+                                    Engine Repair
+                                </option>
+
+                                <option value="Tyre Replacement">
+                                    Tyre Replacement
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Service Date</label>
+
+                            <input
+                                type="date"
+                                id="maintenanceDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Cost (₹)</label>
+
+                            <input
+                                type="number"
+                                id="maintenanceCost"
+                                placeholder="Enter cost"
+                                min="0"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full-width">
+
+                            <label>Description</label>
+
+                            <textarea
+                                id="maintenanceDescription"
+                                placeholder="Enter maintenance details"
+                                rows="3"
+                                required
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            id="cancelMaintenanceBtn"
+                        >
+                            Cancel
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            Schedule Maintenance
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- TABLE -->
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <small>MAINTENANCE RECORDS</small>
+
+                        <h2>Maintenance History</h2>
+
+                    </div>
+
+                    <select id="maintenanceStatusFilter">
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="Pending">
+                            Pending
+                        </option>
+
+                        <option value="In Progress">
+                            In Progress
+                        </option>
+
+                        <option value="Completed">
+                            Completed
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Vehicle</th>
+                                <th>Type</th>
+                                <th>Date</th>
+                                <th>Cost</th>
+                                <th>Description</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="maintenanceTableBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    style="text-align: center;"
+                                >
+                                    No maintenance records yet.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="../js/shared.js"></script>
+    <script src="../js/maintenance.js"></script>
+
+</body>
+
+</html>
