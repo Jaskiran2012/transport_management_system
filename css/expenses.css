@@ -66,6 +66,10 @@ thead th {
 tbody td { padding: 11px 8px; border-bottom: 1px solid var(--border); }
 tbody tr:hover { background: #fafbfc; }
 .mono { font-variant-numeric: tabular-nums; }
+.mono {
+  font-family: "JetBrains Mono", Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
 .empty-row td { text-align: center; color: var(--muted); padding: 30px 0; }
 
 .toast-container { position: fixed; bottom: 22px; right: 22px; display: flex; flex-direction: column; gap: 8px; z-index: 999; }
@@ -104,7 +108,8 @@ tbody tr:hover { background: #fafbfc; }
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600&display=swap");
 
 .stat-card h2 {
-  font-family: "JetBrains Mono", Consolas, monospace;
+  font-family: "Courier New", Consolas, monospace;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
   border-bottom: 3px solid var(--accent, var(--blue));
   display: inline-block;

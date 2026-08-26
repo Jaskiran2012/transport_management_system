@@ -51,9 +51,8 @@
         </div>
 
         <div class="menu-section">
-            <p class="menu-title">SYSTEM</p>
-            <a href="settings.html" class="menu-item">
-                <span class="menu-icon">⚙</span><span>Settings</span>
+            <a href="index.html" class="menu-item sign-out-link">
+                <span class="menu-icon">↪</span><span>Sign out</span>
             </a>
         </div>
 
@@ -129,11 +128,44 @@
                 </div>
             </div>
 
+            <div class="analytics-grid" style="grid-template-columns: 1.3fr 1fr;">
+                <div class="panel">
+                    <div class="panel-header">
+                        <div><small>LIVE CONDITIONS</small><h2>Weather across fleet cities</h2></div>
+                    </div>
+                    <div class="weather-grid" id="weatherPanel">
+                        <p style="color:var(--muted); font-size:13px;">Loading live weather…</p>
+                    </div>
+                    <div id="weatherChart" style="margin-top:16px;"></div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <div><small>ROUTE PLANNER</small><h2>Estimate distance &amp; drive time</h2></div>
+                    </div>
+                    <form id="routeForm" class="form-grid">
+                        <div class="field">
+                            <label for="fromCity">From</label>
+                            <select id="fromCity" required></select>
+                        </div>
+                        <div class="field">
+                            <label for="toCity">To</label>
+                            <select id="toCity" required></select>
+                        </div>
+                        <div class="field">
+                            <button type="submit" class="btn btn--primary">Get route</button>
+                        </div>
+                    </form>
+                    <div id="routeResult" style="margin-top:14px;"></div>
+                </div>
+            </div>
+
         </section>
     </main>
 </div>
 
 <script src="../js/shared.js"></script>
+<script src="../js/api.js"></script>
 <script src="../js/reports.js"></script>
 </body>
 </html>

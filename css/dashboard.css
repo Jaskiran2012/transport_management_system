@@ -186,6 +186,10 @@ body {
     color: white;
 }
 
+.sign-out-link {
+    color: red;
+}
+
 .menu-item.active {
     background:
         linear-gradient(
