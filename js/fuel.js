@@ -7,7 +7,6 @@
    ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-  seedVehiclesIfEmpty();
   document.getElementById("dateInput").valueAsDate = new Date();
 
   populateVehicleDropdowns();
@@ -26,8 +25,8 @@ function populateVehicleDropdowns() {
   const filter = document.getElementById("vehicleFilter");
 
   vehicles.forEach((v) => {
-    select.insertAdjacentHTML("beforeend", `<option value="${v.id}">${v.name}</option>`);
-    filter.insertAdjacentHTML("beforeend", `<option value="${v.id}">${v.name}</option>`);
+    select.insertAdjacentHTML("beforeend", `<option value="${v.id}">${getVehicleName(v.id)}</option>`);
+    filter.insertAdjacentHTML("beforeend", `<option value="${v.id}">${getVehicleName(v.id)}</option>`);
   });
 }
 

@@ -23,21 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const profileAvatar = document.getElementById("profileAvatar");
     const welcomeName = document.getElementById("welcome");
 
-    if (profileName) {
-        profileName.textContent = user.name;
-    }
-
-    if (profileRole) {
-        profileRole.textContent = user.role;
-    }
-
-    if (profileAvatar) {
-        profileAvatar.textContent = user.name.charAt(0).toUpperCase();
-    }
-
-    if (welcomeName) {
-        welcomeName.textContent = `${user.name.split(" ")[0]}.`;
-    }
+    if (profileName) profileName.textContent = user.name;
+    if (profileRole) profileRole.textContent = user.role;
+    if (profileAvatar) profileAvatar.textContent = user.name.charAt(0).toUpperCase();
+    if (welcomeName) welcomeName.textContent = `${user.name.split(" ")[0]}.`;
 
 
     /* =====================================
@@ -103,6 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================
        SIDEBAR NAVIGATION
+       Real page links (href="something.html") should navigate
+       normally. Only placeholder links (href="#", e.g. Settings
+       until that page exists) get intercepted so the browser
+       doesn't jump to the top of the page.
     ===================================== */
 
     const menuItems =
@@ -112,11 +105,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         item.addEventListener("click", function (event) {
 
-            menuItems.forEach(function (menu) {
-                menu.classList.remove("active");
-            });
-
-            item.classList.add("active");
+            if (item.getAttribute("href") === "#") {
+                event.preventDefault();
+            }
+            // real links: let the browser navigate — the
+            // destination page's own HTML already marks
+            // itself "active" in the sidebar.
 
         });
 

@@ -9,7 +9,6 @@ const categoryPillClass = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  seedVehiclesIfEmpty();
   document.getElementById("dateInput").valueAsDate = new Date();
 
   populateVehicleDropdown();
@@ -26,7 +25,7 @@ function populateVehicleDropdown() {
   const vehicles = getVehicles();
   const select = document.getElementById("vehicleSelect");
   vehicles.forEach((v) => {
-    select.insertAdjacentHTML("beforeend", `<option value="${v.id}">${v.name}</option>`);
+    select.insertAdjacentHTML("beforeend", `<option value="${v.id}">${getVehicleName(v.id)}</option>`);
   });
 }
 
