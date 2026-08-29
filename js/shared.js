@@ -1,8 +1,3 @@
-/* ============================================================
-   shared.js — data helpers for Member 4 (Fuel + Expenses + Reports)
-   Sidebar/topbar are now real static HTML in each page (matching
-   dashboard.html), so this file only holds storage + formatting.
-   ============================================================ */
 
 const LS_KEYS = {
   vehicles: "vehicles",
@@ -27,9 +22,6 @@ function getVehicles() {
   return getData(LS_KEYS.vehicles);
 }
 
-// Real vehicle records have no "name" field — build a display
-// name from what they do have: id + model (falls back to the
-// registration number if model is missing).
 function getVehicleName(vehicleId) {
   const vehicles = getVehicles();
   const match = vehicles.find((v) => v.id === vehicleId);
@@ -67,8 +59,6 @@ function showToast(message, type = "success") {
   }, 2600);
 }
 
-// ---------- integration point: what Person 1's dashboard calls ----------
-// dashboard's stats object = { ...vehicles, ...drivers, ...trips, expenses: getExpenseStats() }
 function getExpenseStats() {
   const fuelLogs = getData(LS_KEYS.fuelLogs);
   const expenses = getData(LS_KEYS.expenses);
@@ -85,7 +75,6 @@ function getExpenseStats() {
   };
 }
 
-// this month only (year+month match) — what the dashboard card shows
 function getCurrentMonthSpend() {
   const now = new Date();
   const isThisMonth = (dateStr) => {

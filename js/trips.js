@@ -1,6 +1,3 @@
-// ==========================================
-// TRIPS - TRANSITOPS
-// ==========================================
 
 const addTripBtn = document.getElementById("addTripBtn");
 const tripFormPanel = document.getElementById("tripFormPanel");
@@ -9,11 +6,6 @@ const tripForm = document.getElementById("tripForm");
 
 const vehicleSelect = document.getElementById("vehicle");
 const driverSelect = document.getElementById("driver");
-
-
-// ==========================================
-// GET DATA
-// ==========================================
 
 function getVehicles() {
     return JSON.parse(localStorage.getItem("vehicles")) || [];
@@ -27,11 +19,6 @@ function getTrips() {
     return JSON.parse(localStorage.getItem("trips")) || [];
 }
 
-
-// ==========================================
-// OPEN FORM
-// ==========================================
-
 addTripBtn.addEventListener("click", function () {
 
     populateVehicleDropdown();
@@ -40,22 +27,12 @@ addTripBtn.addEventListener("click", function () {
     tripFormPanel.style.display = "block";
 });
 
-
-// ==========================================
-// CLOSE FORM
-// ==========================================
-
 cancelTripBtn.addEventListener("click", function () {
 
     tripFormPanel.style.display = "none";
     tripForm.reset();
 
 });
-
-
-// ==========================================
-// VEHICLE DROPDOWN
-// ==========================================
 
 function populateVehicleDropdown() {
 
@@ -99,11 +76,6 @@ function populateVehicleDropdown() {
     });
 }
 
-
-// ==========================================
-// DRIVER DROPDOWN
-// ==========================================
-
 function populateDriverDropdown() {
 
     const drivers = getDrivers();
@@ -140,11 +112,6 @@ function populateDriverDropdown() {
 
     });
 }
-
-
-// ==========================================
-// CREATE TRIP
-// ==========================================
 
 tripForm.addEventListener("submit", function (event) {
 
@@ -258,11 +225,6 @@ tripForm.addEventListener("submit", function (event) {
 
 });
 
-
-// ==========================================
-// DISPLAY TRIPS
-// ==========================================
-
 function displayTrips() {
 
     const tripsTableBody =
@@ -373,11 +335,6 @@ function displayTrips() {
 
 }
 
-
-// ==========================================
-// UPDATE TRIP STATUS
-// ==========================================
-
 function updateTripStatus(tripId, newStatus) {
 
     let trips = getTrips();
@@ -430,19 +387,10 @@ function updateTripStatus(tripId, newStatus) {
 
 }
 
-
-// ==========================================
-// UPDATE VEHICLE + DRIVER STATUS
-// ==========================================
-
 function updateVehicleAndDriverStatus(trip, oldStatus, newStatus) {
 
     let vehicles = getVehicles();
     let drivers = getDrivers();
-
-    // ==========================================
-    // VEHICLE STATUS
-    // ==========================================
 
     const vehicleIndex = vehicles.findIndex(function (vehicle) {
 
@@ -471,11 +419,6 @@ function updateVehicleAndDriverStatus(trip, oldStatus, newStatus) {
         }
 
     }
-
-
-    // ==========================================
-    // DRIVER STATUS
-    // ==========================================
 
     const driverIndex = drivers.findIndex(function (driver) {
 
@@ -518,11 +461,6 @@ function updateVehicleAndDriverStatus(trip, oldStatus, newStatus) {
     );
 
 }
-
-
-// ==========================================
-// INITIAL LOAD
-// ==========================================
 
 populateVehicleDropdown();
 

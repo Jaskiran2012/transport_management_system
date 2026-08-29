@@ -1,6 +1,3 @@
-// ==========================================
-// VEHICLES - TRANSITOPS
-// ==========================================
 
 const addVehicleBtn = document.getElementById("addVehicleBtn");
 const vehicleFormPanel = document.getElementById("vehicleFormPanel");
@@ -8,28 +5,13 @@ const cancelVehicleBtn = document.getElementById("cancelVehicleBtn");
 const vehicleForm = document.getElementById("vehicleForm");
 const vehicleStatusFilter = document.getElementById("vehicleStatusFilter");
 
-
-// ==========================================
-// GET VEHICLES
-// ==========================================
-
 function getVehicles() {
     return JSON.parse(localStorage.getItem("vehicles")) || [];
 }
 
-
-// ==========================================
-// SAVE VEHICLES
-// ==========================================
-
 function saveVehicles(vehicles) {
     localStorage.setItem("vehicles", JSON.stringify(vehicles));
 }
-
-
-// ==========================================
-// REMOVE EXISTING DUPLICATES
-// ==========================================
 
 function removeDuplicateVehicles() {
 
@@ -56,30 +38,15 @@ function removeDuplicateVehicles() {
     saveVehicles(uniqueVehicles);
 }
 
-
-// ==========================================
-// OPEN FORM
-// ==========================================
-
 addVehicleBtn.addEventListener("click", function () {
     vehicleFormPanel.style.display = "block";
 });
-
-
-// ==========================================
-// CLOSE FORM
-// ==========================================
 
 cancelVehicleBtn.addEventListener("click", function () {
 
     vehicleFormPanel.style.display = "none";
     vehicleForm.reset();
 });
-
-
-// ==========================================
-// ADD VEHICLE
-// ==========================================
 
 vehicleForm.addEventListener("submit", function (event) {
 
@@ -178,11 +145,6 @@ vehicleForm.addEventListener("submit", function (event) {
 
 });
 
-
-// ==========================================
-// CREATE VEHICLE ROW
-// ==========================================
-
 function createVehicleRow(vehicle) {
 
     return `
@@ -234,11 +196,6 @@ function createVehicleRow(vehicle) {
     `;
 }
 
-
-// ==========================================
-// DISPLAY VEHICLES
-// ==========================================
-
 function displayVehicles(vehiclesToDisplay = null) {
 
     const tableBody =
@@ -277,11 +234,6 @@ function displayVehicles(vehiclesToDisplay = null) {
     addVehicleStatusListeners();
 }
 
-
-// ==========================================
-// STATUS DROPDOWN LISTENERS
-// ==========================================
-
 function addVehicleStatusListeners() {
 
     const statusDropdowns =
@@ -312,11 +264,6 @@ function addVehicleStatusListeners() {
 
     });
 }
-
-
-// ==========================================
-// UPDATE VEHICLE STATUS
-// ==========================================
 
 function updateVehicleStatus(
     vehicleNumber,
@@ -359,11 +306,6 @@ function updateVehicleStatus(
         newStatus
     );
 }
-
-
-// ==========================================
-// UPDATE STATS
-// ==========================================
 
 function updateVehicleStats() {
 
@@ -415,11 +357,6 @@ function updateVehicleStats() {
     ).textContent = maintenance;
 }
 
-
-// ==========================================
-// STATUS FILTER
-// ==========================================
-
 vehicleStatusFilter.addEventListener(
     "change",
     function () {
@@ -451,11 +388,6 @@ vehicleStatusFilter.addEventListener(
         displayVehicles(filteredVehicles);
     }
 );
-
-
-// ==========================================
-// INITIAL LOAD
-// ==========================================
 
 removeDuplicateVehicles();
 

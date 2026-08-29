@@ -1,16 +1,3 @@
-/* ============================================================
-   api.js — Member 4: Fetch API + REST API consumption
-   Syllabus concepts (Lectures 25-28): Promises, Promise chaining,
-   async/await, Fetch API, REST API, JSON handling, error handling.
-
-   Uses Open-Meteo (https://open-meteo.com) — free, no API key,
-   CORS-enabled. Meaningful for TransitOps: weather at a fleet's
-   operating cities affects dispatch/trip risk.
-   ============================================================ */
-
-// WMO weather codes -> human-readable label + emoji.
-// (Object used as a lookup map instead of a long if/else chain —
-// same pattern as categoryPillClass in expenses.js.)
 const WEATHER_CODES = {
   0: { label: "Clear sky", icon: "☀" },
   1: { label: "Mainly clear", icon: "🌤" },
@@ -35,8 +22,6 @@ function describeWeatherCode(code) {
   return WEATHER_CODES[code] || { label: "Unknown", icon: "•" };
 }
 
-// The cities your fleet operates in (matches the routes shown
-// on the dashboard mockup: Chandigarh, Mohali, Patiala, Zirakpur, Ambala).
 const FLEET_CITIES = [
   { name: "Chandigarh", lat: 30.7333, lon: 76.7794 },
   { name: "Mohali", lat: 30.7046, lon: 76.7179 },
@@ -44,8 +29,6 @@ const FLEET_CITIES = [
   { name: "Zirakpur", lat: 30.6425, lon: 76.8173 },
   { name: "Ambala", lat: 30.3782, lon: 76.7767 },
 ];
-
-// ---------- async/await + try/catch (Lecture 27-28 topics) ----------
 async function fetchWeatherForCity(city) {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current_weather=true`;
 
@@ -69,21 +52,12 @@ async function fetchWeatherForCity(city) {
     return { city: city.name, ok: false };
   }
 }
-
-// Fetch all cities in parallel with Promise.all — faster than
-// awaiting them one by one, and still just one await overall.
 async function fetchFleetWeather() {
   const results = await Promise.all(
     FLEET_CITIES.map((city) => fetchWeatherForCity(city))
   );
   return results;
 }
-
-// ---------- Route planning API (for Trips, per the team plan) ----------
-// OSRM public demo server — free, no API key, CORS-enabled.
-// This is the function Person 3 will call from Member 3's trips.js
-// once "Create Trip" needs a distance/ETA estimate, the same way
-// reports.js calls getExpenseStats() for the dashboard.
 async function fetchRoute(fromName, toName) {
   const from = FLEET_CITIES.find((c) => c.name === fromName);
   const to = FLEET_CITIES.find((c) => c.name === toName);

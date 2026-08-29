@@ -1,13 +1,3 @@
-/* =========================================================
-   TRANSITOPS
-   Login Page Logic
-========================================================= */
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
 const loginForm = document.getElementById("loginForm");
 
 const emailInput = document.getElementById("email");
@@ -34,12 +24,6 @@ const toastMessage =
     document.getElementById("toastMessage");
 
 
-/* =========================================================
-   DEMO USER
-   Temporary authentication.
-   Real RBAC will be added later.
-========================================================= */
-
 const DEMO_USER = {
     email: "admin@transitops.com",
     password: "admin123",
@@ -48,10 +32,6 @@ const DEMO_USER = {
 };
 
 
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
     loadRememberedEmail();
@@ -59,11 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
     animateStats();
 
 });
-
-
-/* =========================================================
-   PASSWORD VISIBILITY
-========================================================= */
 
 passwordToggle.addEventListener("click", () => {
 
@@ -83,10 +58,6 @@ passwordToggle.addEventListener("click", () => {
 });
 
 
-/* =========================================================
-   EMAIL MEMORY
-========================================================= */
-
 function loadRememberedEmail() {
 
     const savedEmail =
@@ -100,11 +71,6 @@ function loadRememberedEmail() {
     }
 
 }
-
-
-/* =========================================================
-   FORM SUBMIT
-========================================================= */
 
 loginForm.addEventListener("submit", async (event) => {
 
@@ -120,24 +86,13 @@ loginForm.addEventListener("submit", async (event) => {
         passwordInput.value.trim();
 
 
-    /* Validate */
 
     if (!validateForm(email, password)) {
         return;
     }
 
 
-    /* Loading state */
-
     setLoading(true);
-
-
-    /*
-        Simulate authentication request.
-
-        Later this will be replaced with:
-        API / backend authentication.
-    */
 
     await delay(900);
 
@@ -155,16 +110,10 @@ loginForm.addEventListener("submit", async (event) => {
 });
 
 
-/* =========================================================
-   FORM VALIDATION
-========================================================= */
-
 function validateForm(email, password) {
 
     let isValid = true;
 
-
-    /* Email */
 
     if (!email) {
 
@@ -186,8 +135,6 @@ function validateForm(email, password) {
 
     }
 
-
-    /* Password */
 
     if (!password) {
 
@@ -214,10 +161,6 @@ function validateForm(email, password) {
 }
 
 
-/* =========================================================
-   EMAIL VALIDATION
-========================================================= */
-
 function isValidEmail(email) {
 
     const emailPattern =
@@ -228,11 +171,6 @@ function isValidEmail(email) {
     return emailPattern.test(email) || looseEmailPattern.test(email);
 
 }
-
-
-/* =========================================================
-   SUCCESSFUL LOGIN
-========================================================= */
 
 function handleSuccessfulLogin(email, name, role) {
 
@@ -283,22 +221,10 @@ function handleSuccessfulLogin(email, name, role) {
     );
 
 
-    /*
-        Dashboard doesn't exist yet.
-
-        Once dashboard.html is created,
-        this will become:
-
-       
-    */
     window.location.href = "dashboard.html";
 
 }
 
-
-/* =========================================================
-   FORGOT PASSWORD
-========================================================= */
 
 forgotPassword.addEventListener("click", (event) => {
 
@@ -309,11 +235,6 @@ forgotPassword.addEventListener("click", (event) => {
     );
 
 });
-
-
-/* =========================================================
-   ERROR HELPERS
-========================================================= */
 
 function showError(element, message) {
 
@@ -329,11 +250,6 @@ function clearErrors() {
 
 }
 
-
-/* =========================================================
-   LOADING
-========================================================= */
-
 function setLoading(isLoading) {
 
     if (isLoading) {
@@ -347,11 +263,6 @@ function setLoading(isLoading) {
     }
 
 }
-
-
-/* =========================================================
-   TOAST
-========================================================= */
 
 let toastTimeout;
 
@@ -372,11 +283,6 @@ function showToast(message) {
     }, 3500);
 
 }
-
-
-/* =========================================================
-   STATS ANIMATION
-========================================================= */
 
 function animateStats() {
 
@@ -434,11 +340,6 @@ function animateStats() {
     });
 
 }
-
-
-/* =========================================================
-   UTILITY
-========================================================= */
 
 function delay(milliseconds) {
 

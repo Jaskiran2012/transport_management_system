@@ -1,10 +1,3 @@
-/* ============================================================
-   fuel.js — Member 4: Fuel logs
-   Syllabus concepts used: arrays & objects, DOM selection/manipulation,
-   events, form validation, localStorage, array methods
-   (push, filter, sort, forEach, map), template literals,
-   destructuring, default parameters.
-   ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("dateInput").valueAsDate = new Date();
@@ -83,8 +76,6 @@ function deleteFuelRecord(id) {
   renderTable();
 }
 
-// stat cards reuse dashboard.css's .stat-card markup so they match
-// the ones on dashboard.html exactly.
 function renderStats() {
   const logs = getData(LS_KEYS.fuelLogs);
   const totalLitres = logs.reduce((sum, log) => sum + log.litres, 0);

@@ -4,28 +4,13 @@ const cancelDriverBtn = document.getElementById("cancelDriverBtn");
 const driverForm = document.getElementById("driverForm");
 const driverStatusFilter = document.getElementById("driverStatusFilter");
 
-
-// ==========================================
-// OPEN DRIVER FORM
-// ==========================================
-
 addDriverBtn.addEventListener("click", function () {
     driverFormPanel.style.display = "block";
 });
 
-
-// ==========================================
-// CLOSE DRIVER FORM
-// ==========================================
-
 cancelDriverBtn.addEventListener("click", function () {
     driverFormPanel.style.display = "none";
 });
-
-
-// ==========================================
-// ADD DRIVER
-// ==========================================
 
 driverForm.addEventListener("submit", function (event) {
 
@@ -80,11 +65,6 @@ driverForm.addEventListener("submit", function (event) {
 
 });
 
-
-// ==========================================
-// DISPLAY ALL DRIVERS
-// ==========================================
-
 function displayDrivers() {
 
     const driversTableBody =
@@ -129,11 +109,6 @@ function displayDrivers() {
     });
 }
 
-
-// ==========================================
-// UPDATE DRIVER STATISTICS
-// ==========================================
-
 function updateDriverStats() {
 
     const drivers =
@@ -170,11 +145,6 @@ function updateDriverStats() {
     document.getElementById("inactiveDrivers").textContent = inactive;
 }
 
-
-// ==========================================
-// STATUS FILTER
-// ==========================================
-
 driverStatusFilter.addEventListener("change", function () {
 
     const selectedStatus = driverStatusFilter.value;
@@ -195,11 +165,6 @@ driverStatusFilter.addEventListener("change", function () {
     displayFilteredDrivers(filteredDrivers);
 
 });
-
-
-// ==========================================
-// DISPLAY FILTERED DRIVERS
-// ==========================================
 
 function displayFilteredDrivers(drivers) {
 
@@ -242,11 +207,6 @@ function displayFilteredDrivers(drivers) {
     });
 
 }
-
-
-// ==========================================
-// INITIAL PAGE LOAD
-// ==========================================
 
 displayDrivers();
 updateDriverStats();

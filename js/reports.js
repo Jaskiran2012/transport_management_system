@@ -1,8 +1,3 @@
-/* ============================================================
-   reports.js — Member 4: Analytics
-   getExpenseStats() is the function Person 1 will call for the
-   Dashboard: expenses: getExpenseStats()
-   ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
   renderStats();
@@ -85,9 +80,6 @@ async function handleRouteSubmit(event) {
     </div>
   `;
 }
-
-// getExpenseStats() now lives in shared.js so dashboard.html can
-// call it too — see the "integration point" comment there.
 
 function renderStats() {
   const { totalFuelCost, totalExpenseCost, totalOperatingCost } = getExpenseStats();

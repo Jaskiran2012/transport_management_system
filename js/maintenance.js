@@ -1,12 +1,3 @@
-// ==========================================
-// MAINTENANCE - TRANSITOPS
-// ==========================================
-
-
-// ==========================================
-// ELEMENTS
-// ==========================================
-
 const addMaintenanceBtn =
     document.getElementById("addMaintenanceBtn");
 
@@ -25,11 +16,6 @@ const maintenanceVehicle =
 const maintenanceStatusFilter =
     document.getElementById("maintenanceStatusFilter");
 
-
-// ==========================================
-// GET DATA
-// ==========================================
-
 function getVehicles() {
 
     return JSON.parse(
@@ -47,11 +33,6 @@ function getMaintenance() {
 
 }
 
-
-// ==========================================
-// OPEN FORM
-// ==========================================
-
 addMaintenanceBtn.addEventListener(
     "click",
     function () {
@@ -63,11 +44,6 @@ addMaintenanceBtn.addEventListener(
     }
 );
 
-
-// ==========================================
-// CLOSE FORM
-// ==========================================
-
 cancelMaintenanceBtn.addEventListener(
     "click",
     function () {
@@ -78,11 +54,6 @@ cancelMaintenanceBtn.addEventListener(
 
     }
 );
-
-
-// ==========================================
-// VEHICLE DROPDOWN
-// ==========================================
 
 function populateVehicleDropdown() {
 
@@ -132,11 +103,6 @@ function populateVehicleDropdown() {
 
 }
 
-
-// ==========================================
-// ADD MAINTENANCE
-// ==========================================
-
 maintenanceForm.addEventListener(
     "submit",
     function (event) {
@@ -182,11 +148,6 @@ maintenanceForm.addEventListener(
 
         }
 
-
-        // ==========================================
-        // CREATE RECORD
-        // ==========================================
-
         const record = {
 
             vehicle: vehicle,
@@ -202,11 +163,6 @@ maintenanceForm.addEventListener(
             status: "Pending"
 
         };
-
-
-        // ==========================================
-        // SAVE
-        // ==========================================
 
         let maintenance =
             getMaintenance();
@@ -227,19 +183,9 @@ maintenanceForm.addEventListener(
             JSON.stringify(maintenance)
         );
 
-
-        // ==========================================
-        // CHANGE VEHICLE STATUS
-        // ==========================================
-
         updateVehicleForMaintenance(
             vehicle
         );
-
-
-        // ==========================================
-        // UPDATE PAGE
-        // ==========================================
 
         displayMaintenance();
 
@@ -259,11 +205,6 @@ maintenanceForm.addEventListener(
 
     }
 );
-
-
-// ==========================================
-// UPDATE VEHICLE STATUS
-// ==========================================
 
 function updateVehicleForMaintenance(
     vehicleNumber
@@ -300,11 +241,6 @@ function updateVehicleForMaintenance(
     );
 
 }
-
-
-// ==========================================
-// DISPLAY MAINTENANCE
-// ==========================================
 
 function displayMaintenance() {
 
@@ -423,11 +359,6 @@ function displayMaintenance() {
 
 }
 
-
-// ==========================================
-// UPDATE MAINTENANCE STATUS
-// ==========================================
-
 function updateMaintenanceStatus(
     recordId,
     newStatus
@@ -488,11 +419,6 @@ function updateMaintenanceStatus(
 
 }
 
-
-// ==========================================
-// MAKE VEHICLE AVAILABLE
-// ==========================================
-
 function makeVehicleAvailable(
     vehicleNumber
 ) {
@@ -528,11 +454,6 @@ function makeVehicleAvailable(
     );
 
 }
-
-
-// ==========================================
-// MAINTENANCE STATS
-// ==========================================
 
 function updateMaintenanceStats() {
 
@@ -586,11 +507,6 @@ function updateMaintenanceStats() {
 
 }
 
-
-// ==========================================
-// FILTER
-// ==========================================
-
 maintenanceStatusFilter.addEventListener(
     "change",
     function () {
@@ -619,11 +535,6 @@ maintenanceStatusFilter.addEventListener(
 
     }
 );
-
-
-// ==========================================
-// DISPLAY FILTERED
-// ==========================================
 
 function displayFilteredMaintenance(
     records
@@ -712,11 +623,6 @@ function displayFilteredMaintenance(
 
 }
 
-
-// ==========================================
-// SEARCH
-// ==========================================
-
 document
     .getElementById("maintenanceSearch")
     .addEventListener(
@@ -765,11 +671,6 @@ document
 
         }
     );
-
-
-// ==========================================
-// INITIAL LOAD
-// ==========================================
 
 populateVehicleDropdown();
 

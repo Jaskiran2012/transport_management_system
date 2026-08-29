@@ -1,13 +1,4 @@
-/* =========================================
-   TRANSITOPS DASHBOARD JAVASCRIPT
-========================================= */
-
-
 document.addEventListener("DOMContentLoaded", function () {
-
-    /* =====================================
-       CHECK LOGIN
-    ===================================== */
 
     const session = localStorage.getItem("transitopsSession");
 
@@ -28,11 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (profileAvatar) profileAvatar.textContent = user.name.charAt(0).toUpperCase();
     if (welcomeName) welcomeName.textContent = `${user.name.split(" ")[0]}.`;
 
-
-    /* =====================================
-       CURRENT DATE
-    ===================================== */
-
     const dateElement = document.getElementById("currentDate");
 
     if (dateElement) {
@@ -50,10 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =====================================
-       LOGOUT
-    ===================================== */
-
     const logoutBtn = document.getElementById("logoutBtn");
 
     if (logoutBtn) {
@@ -70,10 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =====================================
-       MOBILE SIDEBAR
-    ===================================== */
-
     const mobileMenu =
         document.getElementById("mobileMenu");
 
@@ -89,15 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
-    /* =====================================
-       SIDEBAR NAVIGATION
-       Real page links (href="something.html") should navigate
-       normally. Only placeholder links (href="#", e.g. Settings
-       until that page exists) get intercepted so the browser
-       doesn't jump to the top of the page.
-    ===================================== */
-
     const menuItems =
         document.querySelectorAll(".menu-item");
 
@@ -108,18 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
             if (item.getAttribute("href") === "#") {
                 event.preventDefault();
             }
-            // real links: let the browser navigate — the
-            // destination page's own HTML already marks
-            // itself "active" in the sidebar.
 
         });
 
     });
-
-
-    /* =====================================
-       PERFORMANCE FILTER
-    ===================================== */
 
     const performanceFilter =
         document.getElementById("performanceFilter");
@@ -138,11 +99,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
     }
-
-
-    /* =====================================
-       SEARCH
-    ===================================== */
 
     const searchInput =
         document.querySelector(".search-box input");

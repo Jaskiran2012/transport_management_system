@@ -1,6 +1,3 @@
-/* ============================================================
-   expenses.js — Member 4: Toll / Maintenance / Other expenses
-   ============================================================ */
 
 const categoryPillClass = {
   Toll: "pill--toll",
